@@ -1,0 +1,33 @@
+<style>
+body {
+    background-image: url('<%=@post.image%>'), 
+    
+}
+.Container{
+    color:white;
+    
+}
+</style>
+
+
+<div class="Container">
+<%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
+<%= link_to '<button type="button">Delete</button>'.html_safe, @post, :confirm => "Are You Sure?", :method => :delete %>
+
+
+
+        <p>"<%=@post.thought%>"</p>
+
+
+        <p><%=@post.name%></p>
+        <p style="margin-top: 1rem;"><%= @post.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
+
+
+        <img src="<%= @post.image%>">
+
+
+
+
+<div class="Container" style="height:100%">
+comments will go here
+<div>

@@ -7,6 +7,10 @@ class PostsController < ApplicationController
         error = ""
     end
 
+    def show 
+        @post = Post.find(params[:id])
+    end
+
     def create
         @new_post = Post.new(post_params)
         if  @new_post.name == ""
@@ -20,8 +24,14 @@ class PostsController < ApplicationController
         end
         @new_post.save
         redirect_to root_path
-        
     end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        redirect_to root_path
+    end
+
     #private methods 
     def post_params
         params.require(:post).permit(:thought,:name,:image)

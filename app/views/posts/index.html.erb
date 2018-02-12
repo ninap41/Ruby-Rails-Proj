@@ -45,16 +45,15 @@
     
         <div class="thought" style="background-color: white; border-radius: 1rem;text-align: center; margin: 1rem; padding:1rem; margin-left: 33%;width: 30%">
     <div class="column1">
-        <p style="margin-top: 20%;">"<%= p.thought %>"</p>
+        <p style="margin-top: 20%;">"<%= link_to p.thought, p %>"</p>
         <p>Poster: <%= p.name %></p>
     </div>
     <div class="column1">
         <img style="height:100%;padding:1rem;" src="<%= p.image %>">
     </div>
- 
-        <p  style="margin-top: 1rem;"><%= p.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
-       
-        </div>
+    
+        <p style="margin-top: 1rem;"><%= p.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
+     </div>
     <% end %>
 </span>
 

@@ -5,6 +5,7 @@ root 'posts#index'
 resources :posts #resources gives a list of all CRUD possibilities when typing "rake routes"
 # get '/posts/new' => 'posts#new'
 	
-# post 'posts' => 'posts#create'
+post 'posts' => 'posts#create'
+delete  '/posts/:id' => 'posts#destroy'
 
 end
