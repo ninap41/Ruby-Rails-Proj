@@ -1,0 +1,34 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: rgb(151, 34, 34);
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+.Container {
+    margin: 2rem;
+    padding:1rem;
+    background-color: #EDEDEE;
+    justify-content: left;
+
+}
+.btn{
+  margin:1rem;
+  padding-top:-.5rem;
+  font-size: 1rem;
+  
+}
+
+
+.row {
+  color: grey;
+  padding:2rem;
+  display:block;
+
+}
