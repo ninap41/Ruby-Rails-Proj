@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 root 'posts#index'
 
 resources :posts #resources gives a list of all CRUD possibilities when typing "rake routes"
-get '/posts/new' => 'posts#new'
+# get '/posts/new' => 'posts#new'
 	
-post 'posts' => 'posts#create'
+# post 'posts' => 'posts#create'
 
 end

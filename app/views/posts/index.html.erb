@@ -4,7 +4,7 @@
 <html>
 <head>
   <title>Threadly</title>
-  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Montserrat:400,700' %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding' %>
   <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -24,23 +24,39 @@
 
     <%= form_for(@new_post) do |f| %>
      
-        <div class="column col-xs-8 col-md-10" style="margin-left:8%">
-            <%= f.text_field :caption, :placeholder => "share your thoughts" %>
-      <BR>
+        <div class="column col-xs-8 col-md-10" style="margin-left:8%;">
+        <%= f.text_area :thought, :placeholder => "share your thoughts" %><BR>
+            <%= f.text_field :name, :placeholder => "Name" %><BR>
+            <%= f.text_field :image, :placeholder => "Image URL" %><BR>
+
             <%= f.submit :post, :class => "btn" %>
+
         </div>
     <% end %>
 
 </div>
 
-<ul class="captions" id="captions">
+<span class="thoughts" id="thoughts">
+
+   <% if (@posts.blank?) then %>
+            <h4 style="text-align:center">there are no thoughts yet!</h4>
+        <% end%>
     <% @posts.each do |p| %>
-        <div class="caption" style="background-color: white; text-align: center; margin: 1rem; padding:1rem; margin-left: 33%;width: 30%">
-        <p><%= p.caption %></p>
-        <p><%= p.created_at %></p>
+    
+        <div class="thought" style="background-color: white; border-radius: 1rem;text-align: center; margin: 1rem; padding:1rem; margin-left: 33%;width: 30%">
+    <div class="column1">
+        <p style="margin-top: 20%;">"<%= p.thought %>"</p>
+        <p>Poster: <%= p.name %></p>
+    </div>
+    <div class="column1">
+        <img style="height:100%;padding:1rem;" src="<%= p.image %>">
+    </div>
+ 
+        <p  style="margin-top: 1rem;"><%= p.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
+       
         </div>
     <% end %>
-</ul>
+</span>
 
 </div>
 </div>

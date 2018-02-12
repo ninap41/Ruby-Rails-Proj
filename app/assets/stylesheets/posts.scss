@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$font-stack:    Helvetica, sans-serif;
+$font-stack:    'Nanum Gothic Coding', monospace;
 $primary-color: rgb(151, 34, 34);
 
 body {
@@ -14,9 +14,17 @@ body {
 .Container {
     margin: 2rem;
     padding:1rem;
-    background-color: #EDEDEE;
+    // background-color: #EDEDEE;
     justify-content: left;
+    background-image: url("http://www.jodihelmer.com/wordpress/wp-content/uploads/2014/01/desk-and-typewriter.jpg")
 
+
+}
+.column1 {
+  display: inline-block;
+  height: 10rem;
+  vertical-align:top;
+  text-align:left;
 }
 .btn{
   margin:1rem;
