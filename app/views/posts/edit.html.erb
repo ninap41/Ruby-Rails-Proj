@@ -1,0 +1,14 @@
+<h1>Edit Post</h1>
+
+<%= form_for @post do |f| %>
+<p>
+<%= f.text_area :thought %>
+</p><BR>
+<p>
+<%= f.text_field :name %>
+</p><BR>
+<p>
+<%= f.text_field :image %>
+</p><BR>
+<%= f.submit :post, :class => "btn" %>
+<% end %>

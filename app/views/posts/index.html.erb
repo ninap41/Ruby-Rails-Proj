@@ -21,43 +21,48 @@
 <div class="container">
 
 <div class="row" style="text-align: center">
-
     <%= form_for(@new_post) do |f| %>
-     
         <div class="column col-xs-8 col-md-10" style="margin-left:8%;">
         <%= f.text_area :thought, :placeholder => "share your thoughts" %><BR>
             <%= f.text_field :name, :placeholder => "Name" %><BR>
             <%= f.text_field :image, :placeholder => "Image URL" %><BR>
-
             <%= f.submit :post, :class => "btn" %>
+            <p class="flash-notice"><%= flash[:success] %></p>
+            <p class="flash-notice"><%= flash[:error] %></p>
+            <p class="flash-notice"><%= flash[:noname] %></p>
+
 
         </div>
-    <% end %>
 
+
+    <% end %>
 </div>
 
 <span class="thoughts" id="thoughts">
+    <% if (@posts.blank?) then %>
+        <h4 style="text-align:center">there are no thoughts yet!</h4>
+    <% end%>
 
-   <% if (@posts.blank?) then %>
-            <h4 style="text-align:center">there are no thoughts yet!</h4>
-        <% end%>
     <% @posts.each do |p| %>
-    
-        <div class="thought" style="background-color: white; border-radius: 1rem;text-align: center; margin: 1rem; padding:1rem; margin-left: 33%;width: 30%">
-    <div class="column1">
-        <p style="margin-top: 20%;">"<%= link_to p.thought, p %>"</p>
-        <p>Poster: <%= p.name %></p>
-    </div>
-    <div class="column1">
-        <img style="height:100%;padding:1rem;" src="<%= p.image %>">
-    </div>
-    
-        <p style="margin-top: 1rem;"><%= p.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
-     </div>
+        <div class="thought">
+            <div class="column1">
+                <p style="margin-top: 20%;">"<%= link_to p.thought, p %>"</p>
+                <p>Poster: <%= p.name %></p>
+                <%= link_to '<button type="button">Delete</button>'.html_safe, p, :confirm => "Are You Sure?", :method => :delete %>
+                <%= link_to '<button type="button">Edit</button>'.html_safe, edit_post_path(p) %>
+
+            </div>
+            <div class="column1">
+                <img style="height:100%;padding:1rem;" src="<%= p.image %>">
+            </div>
+                <p style="margin-top: 1rem;"><%= p.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
+        </div>
     <% end %>
 </span>
 
+
 </div>
 </div>
+
 </body>
 </html>

@@ -5,27 +5,25 @@ body {
 }
 .Container{
     color:white;
-    
 }
 </style>
 
 
 <div class="Container">
-<%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
-<%= link_to '<button type="button">Delete</button>'.html_safe, @post, :confirm => "Are You Sure?", :method => :delete %>
-
-
-
-        <p>"<%=@post.thought%>"</p>
-
-
-        <p><%=@post.name%></p>
-        <p style="margin-top: 1rem;"><%= @post.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
-
-
-        <img src="<%= @post.image%>">
-
-
+    <span class="thoughts" id="thoughts">
+    <div class="column1">
+            <p>"<%=@post.thought%>"</p>
+            <p><%=@post.name%></p>
+            <p style="margin-top: 1rem;"><%= @post.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
+            <%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
+            <%= link_to '<button type="button">Delete</button>'.html_safe, @post, :confirm => "Are You Sure?", :method => :delete %>
+    </div>
+    <div class="column1">
+            <img style="height:100%" src="<%= @post.image%>">
+    </div>
+    </span>
+       
+</div>      
 
 
 <div class="Container" style="height:100%">

@@ -15,20 +15,49 @@ class PostsController < ApplicationController
         @new_post = Post.new(post_params)
         if  @new_post.name == ""
             @new_post.name = "Anonymous"
+            flash[:noname] 
         end
         if @new_post.image == ""
-            @new_post.image == "https://img.etsystatic.com/il/109785/715992951/il_fullxfull.715992951_3wie.jpg"
+            flash[:success] = 'You created a post without an image... We have a default for you though!'
+            @new_post.image = "https://img.etsystatic.com/il/109785/715992951/il_fullxfull.715992951_3wie.jpg"
         end
         if  @new_post.thought == ""
             redirect_to root_path
-        end
+        endc
         @new_post.save
         redirect_to root_path
+    end
+
+    def edit 
+        @post = Post.find(params[:id])
+    end
+
+    def update
+        @post = Post.find(params[:id])
+        if @post.update_attributes(post_params)
+            if  @post.name == ""
+                @post.name = "Anonymous"
+                flash[:noname] 
+            end
+            if @post.image == ""
+                flash[:success] = 'You created a post without an image... We have a default for you though!'
+                @post.image = "https://img.etsystatic.com/il/109785/715992951/il_fullxfull.715992951_3wie.jpg"
+            end
+            if  @post.thought == ""
+                @post.thought = "...empty"
+                flash[:noname] = "You submitted an empty post! We filled in the gaps for you."
+            end
+            flash[:success] = 'Thanks for updating the post!'
+            redirect_to root_path 
+        else
+            render "edit"
+        end
     end
 
     def destroy
         @post = Post.find(params[:id])
         @post.destroy
+        flash[:success] = 'Thanks for deleting that post'
         redirect_to root_path
     end
 
