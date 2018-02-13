@@ -19,11 +19,12 @@ class PostsController < ApplicationController
         end
         if @new_post.image == ""
             flash[:success] = 'You created a post without an image... We have a default for you though!'
+
             @new_post.image = "https://img.etsystatic.com/il/109785/715992951/il_fullxfull.715992951_3wie.jpg"
         end
         if  @new_post.thought == ""
             redirect_to root_path
-        endc
+        end
         @new_post.save
         redirect_to root_path
     end
@@ -44,7 +45,6 @@ class PostsController < ApplicationController
                 @post.image = "https://img.etsystatic.com/il/109785/715992951/il_fullxfull.715992951_3wie.jpg"
             end
             if  @post.thought == ""
-                @post.thought = "...empty"
                 flash[:noname] = "You submitted an empty post! We filled in the gaps for you."
             end
             flash[:success] = 'Thanks for updating the post!'

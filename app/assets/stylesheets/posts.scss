@@ -15,16 +15,27 @@ body {
     margin: 2rem;
     padding:1rem;
     // background-color: #EDEDEE;
-    justify-content: left;
+    // justify-content: left;
     background-image: url("http://www.jodihelmer.com/wordpress/wp-content/uploads/2014/01/desk-and-typewriter.jpg")
 
 
+}
+
+.Container2
+{
+    margin: 2rem;
+    padding:1rem;
+ text-align:center;
+    background-image: url("http://www.jodihelmer.com/wordpress/wp-content/uploads/2014/01/desk-and-typewriter.jpg");    
+}
+.flash-notice{
+  color:red;
 }
 .column1 {
   display: inline-block;
   height: 10rem;
   vertical-align:top;
-  text-align:left;
+  // text-align:left;
 }
 .btn{
   margin:1rem;
@@ -32,6 +43,7 @@ body {
   font-size: 1rem;
   
 }
+
 
 .thought {
   background-color: white; 

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Threadly</title>
+  <title>Thought Wall</title>
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding' %>
   <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -22,16 +22,14 @@
 
 <div class="row" style="text-align: center">
     <%= form_for(@new_post) do |f| %>
-        <div class="column col-xs-8 col-md-10" style="margin-left:8%;">
-        <%= f.text_area :thought, :placeholder => "share your thoughts" %><BR>
-            <%= f.text_field :name, :placeholder => "Name" %><BR>
-            <%= f.text_field :image, :placeholder => "Image URL" %><BR>
-            <%= f.submit :post, :class => "btn" %>
+        <div class="column">
+        <%= f.label :thought %>:  <%= f.text_area :thought, :placeholder => "share your thoughts" %><BR>
+        <%= f.label :name %>: <%= f.text_field :name, :placeholder => "If Anon, Leave Empty " %><BR>
+        <%= f.label :image %>:  <%= f.text_field :image, :placeholder => "Image URL" %><BR>
+        <%= f.submit :post, :class => "btn" %>
             <p class="flash-notice"><%= flash[:success] %></p>
             <p class="flash-notice"><%= flash[:error] %></p>
             <p class="flash-notice"><%= flash[:noname] %></p>
-
-
         </div>
 
 

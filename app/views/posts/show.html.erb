@@ -9,7 +9,7 @@ body {
 </style>
 
 
-<div class="Container">
+<div class="Container2">
     <span class="thoughts" id="thoughts">
     <div class="column1">
             <p>"<%=@post.thought%>"</p>
@@ -17,15 +17,30 @@ body {
             <p style="margin-top: 1rem;"><%= @post.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
             <%= link_to '<button type="button">Home</button>'.html_safe, root_path %>
             <%= link_to '<button type="button">Delete</button>'.html_safe, @post, :confirm => "Are You Sure?", :method => :delete %>
+            <p class="flash-notice"><%= flash[:success] %></p>
+            <p class="flash-notice"><%= flash[:error] %></p>
+            <p class="flash-notice"><%= flash[:noname] %></p>
+
     </div>
     <div class="column1">
             <img style="height:100%" src="<%= @post.image%>">
     </div>
+    <div class="column1">
+    
+
+   </div>
     </span>
        
 </div>      
 
 
-<div class="Container" style="height:100%">
-comments will go here
+<div class="Container2" style="height:100%">
+<span class="thoughts" id="thoughts">
+    <% if (@post.comments.blank?) then %>
+        <h4 style="text-align:center">There are no comments yet!</h4>
+    <% end%>
+<% @post.comments.each do |x| %>
+    <ul>"<%=x.content%>" - <%= x.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></ul>
+<% end %>
+
 <div>
