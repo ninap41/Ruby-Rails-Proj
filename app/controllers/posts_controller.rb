@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
     def show 
         @post = Post.find(params[:id])
+        # @post.comments.reject(&:new_record?)
+        @comments = @post.comments
     end
 
     def create

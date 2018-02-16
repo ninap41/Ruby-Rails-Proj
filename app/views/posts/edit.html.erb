@@ -2,15 +2,15 @@
 <h1>Edit Post</h1>
 
 <%= form_for @post do |f| %>
-<p>
+<span>
 <%= f.text_area :thought %>
-</p><BR>
-<p>
+</span><BR>
+<span>
 <%= f.text_field :name %>
-</p><BR>
-<p>
+</span><BR>
+<span>
 <%= f.text_field :image %>
-</p><BR>
+</span><BR>
 <%= f.submit :post, :class => "btn" %>
 <% end %>
 

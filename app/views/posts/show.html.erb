@@ -10,8 +10,8 @@ body {
 
 
 <div class="Container2">
-    <span class="thoughts" id="thoughts">
-    <div class="column1">
+
+    <div class="column2">
             <p>"<%=@post.thought%>"</p>
             <p><%=@post.name%></p>
             <p style="margin-top: 1rem;"><%= @post.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></p>
@@ -22,25 +22,50 @@ body {
             <p class="flash-notice"><%= flash[:noname] %></p>
 
     </div>
-    <div class="column1">
+    <div class="column2">
             <img style="height:100%" src="<%= @post.image%>">
     </div>
-    <div class="column1">
+
     
 
-   </div>
-    </span>
        
 </div>      
 
 
 <div class="Container2" style="height:100%">
-<span class="thoughts" id="thoughts">
-    <% if (@post.comments.blank?) then %>
-        <h4 style="text-align:center">There are no comments yet!</h4>
-    <% end%>
-<% @post.comments.each do |x| %>
-    <ul>"<%=x.content%>" - <%= x.created_at.strftime("%a " + "| %Y-%m-%d " + "| at %I:%M%p") %></ul>
+| <%= @post.comments.size  %> comments |
+
+<% if @comments.count == 0 then %>
+<h4 style="text-align:center">there are no comments yet!</h4>
+<%else%>  
+    <% @post.comments.each do |comment| %>
+    <div class="thoughts">
+        <% if comment.id != nil %>
+            <span>"<%= comment.content %>"</span><BR>
+            <span>- <%= comment.name %> </span><BR>
+           <span><%= time_ago_in_words(comment.created_at) %></span><BR>
+           <%= link_to '<button type="button">Delete</button>'.html_safe, post_comment_path(@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        <%else%>
+        
+       
+        <%end%>
+ 
+   </div>
+    <% end %>
+<% end%>
+<div class="thoughts">   
+<h3>Comment</h3>
+<%= form_for([@post,@post.comments.build]) do |i| %>
+   <%= i.label :name %>
+    <p> <%= i.text_field :name%></p>
+     <%= i.label :content%>
+    <p> <%= i.text_area :content%></p>
+    <p> <%= i.submit "Create"%></p>
 <% end %>
+</div>
+
+
+
 
 <div>

@@ -10,6 +10,21 @@ body {
   font: 100% $font-stack;
   color: $primary-color;
 }
+.thoughts{
+  background-color: white; 
+  border-radius: 1rem;
+ 
+   
+  
+}
+.thoughts:read-only{
+  margin:1rem;
+  text-align: center;
+  margin: 1rem; 
+  padding:1rem; 
+  margin-left: 33%;
+  width: 30%;
+}
 
 .Container {
     margin: 2rem;
@@ -36,7 +51,20 @@ body {
   height: 10rem;
   vertical-align:top;
   // text-align:left;
+  // background-color: rgba(255, 255, 255, 0.881);
+  margin-bottom:1rem;
+  border-radius: 2rem;
 }
+.column2 {
+  display: inline-block;
+  height: 10rem;
+  vertical-align:top;
+  padding:2rem;
+  // text-align:left;
+  background-color: rgba(255, 255, 255, 0.881);
+  border-radius: 2rem;
+}
+
 .btn{
   margin:1rem;
   padding-top:-.5rem;
@@ -46,11 +74,13 @@ body {
 
 
 .thought {
-  background-color: white; 
-  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.881);
+  padding:1rem;
+  border-radius: 2rem;
+
   text-align: center;
    margin: 1rem; 
-   padding:1rem; 
+   
    margin-left: 33%;
    width: 30%;
 }
